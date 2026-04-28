@@ -1,0 +1,7 @@
+method,scope,meaning,v0_3_1_follow_up
+cross_ami,none,Unconditioned pairwise dependence,docs/plan/v0_3_1_lagged_exogenous_triage_plan.md
+cross_pami,target_only,Conditions on target history only,docs/plan/v0_3_1_lagged_exogenous_triage_plan.md
+transfer_entropy,target_only,Conditions on target history only,docs/plan/v0_3_1_lagged_exogenous_triage_plan.md
+gcmi,none,Unconditioned pairwise dependence,docs/plan/v0_3_1_lagged_exogenous_triage_plan.md
+pcmci,full_mci,Full MCI conditioning on multivariate history,docs/plan/v0_3_1_lagged_exogenous_triage_plan.md
+pcmci_ami,full_mci,Full MCI conditioning on multivariate history,docs/plan/v0_3_1_lagged_exogenous_triage_plan.md

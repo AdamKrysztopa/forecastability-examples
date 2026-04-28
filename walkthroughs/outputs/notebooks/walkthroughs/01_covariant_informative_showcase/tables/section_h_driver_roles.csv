@@ -1,0 +1,8 @@
+driver,role,best_lag,methods_supporting,warnings
+driver_contemp,direct_driver,3,"pcmci, pcmci_ami",transfer_entropy and pCrossAMI are conditioned on target history only; they do not condition on other drivers.
+driver_direct,direct_driver,4,"cross_ami, gcmi, transfer_entropy, pcmci, pcmci_ami",transfer_entropy and pCrossAMI are conditioned on target history only; they do not condition on other drivers.
+driver_mediated,direct_driver,2,"cross_ami, gcmi, transfer_entropy, pcmci, pcmci_ami",transfer_entropy and pCrossAMI are conditioned on target history only; they do not condition on other drivers.
+driver_noise,inconclusive,1,-,transfer_entropy and pCrossAMI are conditioned on target history only; they do not condition on other drivers. | Evidence exists but does not match any canonical covariant pattern; review manually.
+driver_nonlin_abs,noise_or_weak,1,-,transfer_entropy and pCrossAMI are conditioned on target history only; they do not condition on other drivers.
+driver_nonlin_sq,nonlinear_driver,2,-,transfer_entropy and pCrossAMI are conditioned on target history only; they do not condition on other drivers.
+driver_redundant,redundant,1,"cross_ami, gcmi, transfer_entropy",transfer_entropy and pCrossAMI are conditioned on target history only; they do not condition on other drivers.
