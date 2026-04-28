@@ -40,6 +40,22 @@ jobs:
           uv sync --no-install-project --all-extras \
             --override-dependencies "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@main"
 
+      # --- CausalRivers data cache (EX-NB-DATA-02) ---
+      # Cache key is the SHA-256 manifest so the parquet is re-fetched only
+      # when the upstream data changes.  On a cache miss the fetch step runs.
+      - name: Restore CausalRivers parquet cache
+        id: causal-rivers-cache
+        uses: actions/cache@v4
+        with:
+          path: data/causal_rivers
+          key: causal-rivers-${{ hashFiles('data/causal_rivers/east_germany_8stations_6h.sha256') }}
+          restore-keys: |
+            causal-rivers-
+
+      - name: Fetch CausalRivers data (cache miss)
+        if: steps.causal-rivers-cache.outputs.cache-hit != 'true'
+        run: uv run python scripts/download_causal_rivers.py
+
       - name: Lint import surface
         run: |
           HITS=$(grep -rn \
