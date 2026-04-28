@@ -1,0 +1,104 @@
+[
+  {
+    "schema_version": "1",
+    "payload_type": "F1ProfilePayload",
+    "serialised_at": "2026-04-28T17:41:25.066895+00:00",
+    "payload": {
+      "schema_version": "1",
+      "peak_horizon": 12,
+      "informative_horizons": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "profile_shape_label": "non_monotone",
+      "profile_summary": "Peak forecastability at horizon 12, 17 informative horizon(s) identified.",
+      "model_now": "HIGH \u2014 Complex structured models recommended for 17 informative horizon(s).",
+      "review_horizons": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "avoid_horizons": [
+        2,
+        10,
+        14
+      ],
+      "epsilon": 0.5421663335096003
+    }
+  },
+  {
+    "schema_version": "1",
+    "payload_type": "F2LimitsPayload",
+    "serialised_at": "2026-04-28T17:41:25.066900+00:00",
+    "payload": {
+      "schema_version": "1",
+      "theoretical_ceiling_by_horizon": [
+        0.6169513055578495,
+        0.4730014416946342,
+        0.5925167358701162,
+        0.8203389136084449,
+        0.6742317927889272,
+        0.5421663335096003,
+        0.653622413260432,
+        0.8304994040870421,
+        0.606245401573871,
+        0.4928596068447244,
+        0.5974610587530664,
+        1.1031545718150655,
+        0.6149372796809875,
+        0.4903095114467435,
+        0.5997342985795551,
+        0.8434923028542269,
+        0.6924388909450898,
+        0.5440318497381043,
+        0.711001323358107,
+        0.8029623636427763
+      ],
+      "ceiling_summary": "Peak MI=1.1032 at horizon 12; 20 horizon(s) exceed the non-trivial threshold (0.01).",
+      "compression_warning": null,
+      "dpi_warning": null,
+      "exploitation_ratio_supported": false
+    }
+  },
+  {
+    "schema_version": "1",
+    "payload_type": "F6ComplexityPayload",
+    "serialised_at": "2026-04-28T17:41:25.066903+00:00",
+    "payload": {
+      "schema_version": "1",
+      "permutation_entropy": 0.7518885617961072,
+      "spectral_entropy": 0.3664320709858888,
+      "complexity_band": "medium",
+      "complexity_summary": "Medium complexity (PE=0.75, SE=0.37): moderate ordinal and spectral disorder; structured statistical models are a reasonable starting point."
+    }
+  }
+]
