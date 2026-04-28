@@ -1,0 +1,33 @@
+{
+  "target_name":"target",
+  "max_lag":6,
+  "known_future_drivers":[
+    "known_future_calendar"
+  ],
+  "selected_lag_map":{
+    "direct_lag2":[
+      2
+    ],
+    "instant_only":[
+      2
+    ],
+    "known_future_calendar":[
+      0,
+      1,
+      4,
+      6
+    ],
+    "mediated_lag1":[
+      1
+    ],
+    "noise":[
+      5
+    ],
+    "nonlinear_lag1":[
+      1
+    ],
+    "redundant":[
+      2
+    ]
+  }
+}

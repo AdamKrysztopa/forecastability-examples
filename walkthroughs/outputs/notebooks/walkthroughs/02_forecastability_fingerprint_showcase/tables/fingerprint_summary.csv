@@ -1,0 +1,5 @@
+target_name,signal_to_noise,information_mass,information_horizon,information_structure,nonlinear_share,directness_ratio,primary_families,confidence_label,caution_flags,agent_summary
+white_noise,0.157888,0.0,0,none,0.0,,-,abstain,-,"[white_noise] structure=none, mass=low, nonlinear=low, signal=medium, horizon=0, confidence=abstain, route=[none]"
+ar1_monotonic,0.666735,0.063939,17,monotonic,0.119844,,"arima, ets, linear_state_space",medium,-,"[ar1_monotonic] structure=monotonic, mass=medium, nonlinear=low, signal=high, horizon=17, confidence=medium, route=[arima, ets, linear_state_space]"
+seasonal_periodic,0.988239,2.849392,24,periodic,0.0,,"seasonal_naive, harmonic_regression, tbats",medium,-,"[seasonal_periodic] structure=periodic, mass=high, nonlinear=low, signal=high, horizon=24, confidence=medium, route=[seasonal_naive, harmonic_regression, tbats]"
+nonlinear_mixed,0.495928,0.026472,5,monotonic,0.0,,"naive, seasonal_naive, downscope",medium,near_threshold,"[nonlinear_mixed] structure=monotonic, mass=low, nonlinear=low, signal=high, horizon=5, confidence=medium, route=[naive, seasonal_naive, downscope]"

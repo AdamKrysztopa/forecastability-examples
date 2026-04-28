@@ -40,10 +40,23 @@ jobs:
           uv sync --no-install-project --all-extras \
             --override-dependencies "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@main"
 
+      - name: Lint import surface
+        run: |
+          HITS=$(grep -rn \
+            "from forecastability\.\(services\|use_cases\|utils\|adapters\|diagnostics\)" \
+            walkthroughs triage_walkthroughs recipes 2>/dev/null || true)
+          if [ -n "$HITS" ]; then
+            echo "ERROR: internal namespace import detected:"
+            echo "$HITS"
+            exit 1
+          fi
+          echo "Import surface lint: OK"
+
       - name: Execute notebooks
         timeout-minutes: 15
         run: |
-          NOTEBOOKS=$(find . -name '*.ipynb' -not -path './.venv/*')
+          NOTEBOOKS=$(find walkthroughs triage_walkthroughs recipes \
+            -name '*.ipynb' 2>/dev/null)
           if [ -z "$NOTEBOOKS" ]; then
             echo "No notebooks found — skipping execution (scaffold only)"
             exit 0
@@ -54,3 +67,15 @@ jobs:
             --inplace \
             --ExecutePreprocessor.timeout=600 \
             $NOTEBOOKS
+
+      - name: Upload executed notebooks as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "executed-notebooks-py${{ matrix.python-version }}-${{ matrix.source }}"
+          path: |
+            walkthroughs/*.ipynb
+            triage_walkthroughs/*.ipynb
+            recipes/**/*.ipynb
+          if-no-files-found: ignore
+          retention-days: 30

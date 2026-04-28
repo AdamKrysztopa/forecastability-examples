@@ -1,0 +1,8 @@
+driver,ground_truth_role,canonical_lag
+driver_direct,Lagged linear direct parent,2
+driver_mediated,Lagged parent with mediated structure,1
+driver_redundant,Strong but redundant covariate,not a parent
+driver_noise,AR(1) noise control,not a parent
+driver_contemp,Contemporaneous parent,0
+driver_nonlin_sq,Quadratic nonlinear parent,1
+driver_nonlin_abs,Absolute-value nonlinear parent,1

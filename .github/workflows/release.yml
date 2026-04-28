@@ -48,10 +48,23 @@ jobs:
             uv sync --frozen --no-install-project --all-extras
           fi
 
+      - name: Lint import surface
+        run: |
+          HITS=$(grep -rn \
+            "from forecastability\.\(services\|use_cases\|utils\|adapters\|diagnostics\)" \
+            walkthroughs triage_walkthroughs recipes 2>/dev/null || true)
+          if [ -n "$HITS" ]; then
+            echo "ERROR: internal namespace import detected:"
+            echo "$HITS"
+            exit 1
+          fi
+          echo "Import surface lint: OK"
+
       - name: Execute notebooks
         timeout-minutes: 15
         run: |
-          NOTEBOOKS=$(find . -name '*.ipynb' -not -path './.venv/*')
+          NOTEBOOKS=$(find walkthroughs triage_walkthroughs recipes \
+            -name '*.ipynb' 2>/dev/null)
           if [ -z "$NOTEBOOKS" ]; then
             echo "No notebooks to execute — handshake skipped (scaffold only)"
             exit 0
@@ -62,3 +75,15 @@ jobs:
             --inplace \
             --ExecutePreprocessor.timeout=600 \
             $NOTEBOOKS
+
+      - name: Upload executed notebooks as release assets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "release-notebooks-py${{ matrix.python-version }}-v${{ steps.core-version.outputs.version }}"
+          path: |
+            walkthroughs/*.ipynb
+            triage_walkthroughs/*.ipynb
+            recipes/**/*.ipynb
+          if-no-files-found: ignore
+          retention-days: 90
