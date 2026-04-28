@@ -1,0 +1,32 @@
+[project]
+name = "forecastability-examples"
+version = "0.4.0"
+description = "Tutorials, walkthroughs, and integrations for the dependence-forecastability toolkit"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+dependencies = [
+    # Pinned at >=0.4.0 for release; using >=0.3.6 here so uv sync resolves
+    # against the current PyPI release during scaffold / pre-release development.
+    # Update to ==0.4.0,<0.5 when 0.4.0 is published.
+    "dependence-forecastability>=0.3.6,<0.5",
+]
+
+[project.optional-dependencies]
+darts = ["darts>=0.30,<0.36"]
+mlforecast = ["mlforecast>=0.13,<0.16", "lightgbm>=4.3,<5"]
+statsforecast = ["statsforecast>=1.7,<2"]
+calendar = ["holidays>=0.50,<1"]
+dev = [
+    "jupyter>=1.1",
+    "nbconvert>=7.16",
+    "pytest>=8.4",
+    "ipykernel>=6",
+]
+all = [
+    "forecastability-examples[darts,mlforecast,statsforecast,calendar,dev]",
+]
+
+# EX-LOCAL-01 (Batch 1b) will add [tool.uv.sources] with the env-var-gated
+# editable override pointing to the sibling core checkout.
+

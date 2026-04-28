@@ -1,0 +1,56 @@
+name: Notebooks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  notebooks:
+    name: "py${{ matrix.python-version }} / ${{ matrix.source }}"
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.source == 'unpinned-main' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+        source: [pinned, unpinned-main]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ">=0.5"
+
+      - name: Install (pinned source — PyPI)
+        if: matrix.source == 'pinned'
+        run: uv sync --frozen --no-install-project --all-extras
+
+      - name: Install (unpinned-main — git HEAD)
+        if: matrix.source == 'unpinned-main'
+        run: |
+          uv sync --no-install-project --all-extras \
+            --override-dependencies "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@main"
+
+      - name: Execute notebooks
+        timeout-minutes: 15
+        run: |
+          NOTEBOOKS=$(find . -name '*.ipynb' -not -path './.venv/*')
+          if [ -z "$NOTEBOOKS" ]; then
+            echo "No notebooks found — skipping execution (scaffold only)"
+            exit 0
+          fi
+          uv run jupyter nbconvert \
+            --to notebook \
+            --execute \
+            --inplace \
+            --ExecutePreprocessor.timeout=600 \
+            $NOTEBOOKS

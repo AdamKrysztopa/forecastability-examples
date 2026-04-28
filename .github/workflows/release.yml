@@ -1,0 +1,64 @@
+name: Release Handshake
+
+on:
+  repository_dispatch:
+    types: [core_release]
+  workflow_dispatch:
+    inputs:
+      core_version:
+        description: "Core release version to test against (e.g. 0.4.0)"
+        required: false
+        default: ""
+
+jobs:
+  notebook-matrix:
+    name: "Handshake py${{ matrix.python-version }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ">=0.5"
+
+      - name: Resolve core version
+        id: core-version
+        run: |
+          VERSION="${{ github.event.client_payload.version || inputs.core_version }}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Install with specific core version
+        run: |
+          VERSION="${{ steps.core-version.outputs.version }}"
+          if [ -n "$VERSION" ]; then
+            uv sync --frozen --no-install-project --all-extras \
+              --override-dependencies "dependence-forecastability==${VERSION}"
+          else
+            uv sync --frozen --no-install-project --all-extras
+          fi
+
+      - name: Execute notebooks
+        timeout-minutes: 15
+        run: |
+          NOTEBOOKS=$(find . -name '*.ipynb' -not -path './.venv/*')
+          if [ -z "$NOTEBOOKS" ]; then
+            echo "No notebooks to execute — handshake skipped (scaffold only)"
+            exit 0
+          fi
+          uv run jupyter nbconvert \
+            --to notebook \
+            --execute \
+            --inplace \
+            --ExecutePreprocessor.timeout=600 \
+            $NOTEBOOKS
