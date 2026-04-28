@@ -10,6 +10,7 @@ dependencies = [
     # against the current PyPI release during scaffold / pre-release development.
     # Update to ==0.4.0,<0.5 when 0.4.0 is published.
     "dependence-forecastability>=0.3.6,<0.5",
+    "tabulate>=0.10.0",
 ]
 
 [project.optional-dependencies]
