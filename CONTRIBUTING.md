@@ -70,5 +70,17 @@ uv sync --all-extras  # everything
 
 ## Local development against a core branch
 
-See `docs/development/local_workspace.md` in the core repo for the full local two-repo
-workflow (arriving in EX-LOCAL-01 / Batch 1b).
+See [`docs/development/local_workspace.md`](https://github.com/AdamKrysztopa/dependence-forecastability/blob/main/docs/development/local_workspace.md)
+in the core repo for the full local two-repo workflow.
+
+**Quick start:**
+
+```bash
+# From the core repo root
+export FORECASTABILITY_LOCAL_DEV=1
+bash scripts/bootstrap_local_workspace.sh
+```
+
+This clones the sibling (if absent), creates the multi-root VS Code workspace,
+and installs the core in editable mode into the sibling's venv so your local
+core changes are immediately visible.

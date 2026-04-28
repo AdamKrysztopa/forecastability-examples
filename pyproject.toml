@@ -27,6 +27,17 @@ all = [
     "forecastability-examples[darts,mlforecast,statsforecast,calendar,dev]",
 ]
 
-# EX-LOCAL-01 (Batch 1b) will add [tool.uv.sources] with the env-var-gated
-# editable override pointing to the sibling core checkout.
+# EX-LOCAL-01 — Local two-repo development workflow
+#
+# By default this project installs dependence-forecastability from PyPI.
+# For local iteration against an unreleased core branch:
+#
+#   export FORECASTABILITY_LOCAL_DEV=1
+#   bash ../ami/scripts/bootstrap_local_workspace.sh
+#
+# The bootstrap script runs `uv pip install -e ../ami` inside this venv,
+# making core changes immediately visible without modifying pyproject.toml.
+# CI is unaffected because FORECASTABILITY_LOCAL_DEV is not set on runners.
+#
+# See docs/development/local_workspace.md in the core repo for the full guide.
 
