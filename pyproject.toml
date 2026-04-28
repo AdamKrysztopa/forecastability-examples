@@ -17,6 +17,7 @@ darts = ["darts>=0.30,<0.36"]
 mlforecast = ["mlforecast>=0.13,<0.16", "lightgbm>=4.3,<5"]
 statsforecast = ["statsforecast>=1.7,<2"]
 causal = ["tigramite>=5.2"]
+agent = ["pydantic-ai>=0.2"]
 calendar = ["holidays>=0.50,<1"]
 dev = [
     "jupyter>=1.1",
@@ -25,7 +26,7 @@ dev = [
     "ipykernel>=6",
 ]
 all = [
-    "forecastability-examples[darts,mlforecast,statsforecast,causal,calendar,dev]",
+    "forecastability-examples[darts,mlforecast,statsforecast,causal,agent,calendar,dev]",
 ]
 
 # EX-LOCAL-01 — Local two-repo development workflow
