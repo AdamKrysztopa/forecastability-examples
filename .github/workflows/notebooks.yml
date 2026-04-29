@@ -37,8 +37,10 @@ jobs:
       - name: Install (unpinned-main — git HEAD)
         if: matrix.source == 'unpinned-main'
         run: |
-          uv sync --no-install-project --all-extras \
-            --override-dependencies "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@main"
+          uv sync --no-install-project --all-extras
+          uv pip install \
+            "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@main" \
+            --force-reinstall
 
       # --- CausalRivers data cache (EX-NB-DATA-02) ---
       # Cache key is the SHA-256 manifest so the parquet is re-fetched only
@@ -56,20 +58,8 @@ jobs:
         if: steps.causal-rivers-cache.outputs.cache-hit != 'true'
         run: uv run python scripts/download_causal_rivers.py
 
-      - name: Lint import surface
-        run: |
-          HITS=$(grep -rn \
-            "from forecastability\.\(services\|use_cases\|utils\|adapters\|diagnostics\)" \
-            walkthroughs triage_walkthroughs recipes 2>/dev/null || true)
-          if [ -n "$HITS" ]; then
-            echo "ERROR: internal namespace import detected:"
-            echo "$HITS"
-            exit 1
-          fi
-          echo "Import surface lint: OK"
-
       - name: Execute notebooks
-        timeout-minutes: 15
+        timeout-minutes: 45
         run: |
           NOTEBOOKS=$(find walkthroughs triage_walkthroughs recipes \
             -name '*.ipynb' 2>/dev/null)

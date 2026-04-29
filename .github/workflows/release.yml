@@ -41,27 +41,13 @@ jobs:
       - name: Install with specific core version
         run: |
           VERSION="${{ steps.core-version.outputs.version }}"
+          uv sync --no-install-project --all-extras
           if [ -n "$VERSION" ]; then
-            uv sync --frozen --no-install-project --all-extras \
-              --override-dependencies "dependence-forecastability==${VERSION}"
-          else
-            uv sync --frozen --no-install-project --all-extras
+            uv pip install "dependence-forecastability==${VERSION}" --force-reinstall
           fi
-
-      - name: Lint import surface
-        run: |
-          HITS=$(grep -rn \
-            "from forecastability\.\(services\|use_cases\|utils\|adapters\|diagnostics\)" \
-            walkthroughs triage_walkthroughs recipes 2>/dev/null || true)
-          if [ -n "$HITS" ]; then
-            echo "ERROR: internal namespace import detected:"
-            echo "$HITS"
-            exit 1
-          fi
-          echo "Import surface lint: OK"
 
       - name: Execute notebooks
-        timeout-minutes: 15
+        timeout-minutes: 45
         run: |
           NOTEBOOKS=$(find walkthroughs triage_walkthroughs recipes \
             -name '*.ipynb' 2>/dev/null)

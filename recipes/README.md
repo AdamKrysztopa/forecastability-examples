@@ -4,12 +4,15 @@ Short, focused integration snippets showing how to wire `forecastability` output
 
 ## Available recipes
 
-*(Framework-specific recipe notebooks arrive in later phases.)*
+| Notebook | Description |
+| --- | --- |
+| [contract_roundtrip.ipynb](contract_roundtrip.ipynb) | `ForecastPrepContract` round-trip — `model_dump_json()` → disk → `model_validate_json()` without re-importing `forecastability` |
 
 ## Cross-repo links
 
 - **Core text recipe** (framework-agnostic): [`docs/recipes/forecast_prep_to_external_frameworks.md`](https://github.com/AdamKrysztopa/dependence-forecastability/blob/main/docs/recipes/forecast_prep_to_external_frameworks.md)
-- Executed notebook release assets will be linked here once notebooks are present.
+- Core examples index (all notebooks): [`docs/examples_index.md`](https://github.com/AdamKrysztopa/dependence-forecastability/blob/main/docs/examples_index.md)
+- **Executed notebooks** (release assets): [forecastability-examples releases](https://github.com/AdamKrysztopa/forecastability-examples/releases) — each release ships fully executed notebooks (including `contract_roundtrip.ipynb`) as downloadable artifacts
 
 ## Framework support
 

@@ -2,10 +2,19 @@
 
 Step-by-step forecastability walkthroughs using the `dependence-forecastability` toolkit.
 
-Notebooks arrive here via [EX-MIG-01](https://github.com/AdamKrysztopa/dependence-forecastability/blob/main/docs/plan/v0_4_0_examples_repo_split_ultimate_plan.md).
-
 | Notebook | Description |
 | --- | --- |
-| *(arriving via EX-MIG-01)* | — |
+| [00_air_passengers_showcase.ipynb](00_air_passengers_showcase.ipynb) | All forecastability methods demonstrated on the Air Passengers series |
+| [01_canonical_forecastability.ipynb](01_canonical_forecastability.ipynb) | AMI vs pAMI forecastability triage on canonical synthetic cases; full report output |
+| [01_covariant_informative_showcase.ipynb](01_covariant_informative_showcase.ipynb) | Covariate informativeness triage — when does an exogenous driver improve forecastability? |
+| [02_exogenous_analysis.ipynb](02_exogenous_analysis.ipynb) | CrossAMI and pCrossAMI exogenous screening on bike-sharing, AAPL/SPY, and BTC/ETH series |
+| [02_forecastability_fingerprint_showcase.ipynb](02_forecastability_fingerprint_showcase.ipynb) | Forecastability fingerprint — compact four-field profile and routing recommendation |
+| [03_lagged_exogenous_triage_showcase.ipynb](03_lagged_exogenous_triage_showcase.ipynb) | Lagged-exogenous triage — driver lag roles, sparse selection, and tensor-ready lag maps |
+| [03_triage_end_to_end.ipynb](03_triage_end_to_end.ipynb) | End-to-end agentic triage walkthrough; the consumer surface for automated triage pipelines |
+| [04_routing_validation_showcase.ipynb](04_routing_validation_showcase.ipynb) | Routing validation — auditing deterministic routing against synthetic archetypes |
+| [04_screening_end_to_end.ipynb](04_screening_end_to_end.ipynb) | Agentic feature screening — which exogenous drivers matter for forecastability? |
+| [05_forecast_prep_to_models.ipynb](05_forecast_prep_to_models.ipynb) | Triage → `ForecastPrepContract` → hand-off to Darts, MLForecast, and sklearn Ridge; demonstrates the v0.3.4 sprint |
+| [06_triage_driven_vs_naive_on_m4.ipynb](06_triage_driven_vs_naive_on_m4.ipynb) | Triage-driven model-family selection vs SeasonalNaive on M4 monthly subset (≤ 200 series) |
+| [07_causal_rivers_lag_and_feature_selection.ipynb](07_causal_rivers_lag_and_feature_selection.ipynb) | Capability demo on the CausalRivers benchmark — self-lag and exogenous lag selection recovering graph-verified positives and rejecting negative controls |
 
 See also the [triage walkthroughs](../triage_walkthroughs/) and [recipes](../recipes/).
