@@ -56,7 +56,7 @@ from forecastability.triage import ...
 - `forecastability.adapters`
 - `forecastability.diagnostics`
 
-CI enforces this with a grep lint step.
+The local two-repo bootstrap script reports violations so migrated notebooks can be refactored toward this boundary without blocking the release split.
 
 ## Framework dependencies
 

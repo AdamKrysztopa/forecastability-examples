@@ -12,7 +12,7 @@ Before starting the dance, confirm:
 - [ ] Sibling notebooks CI (`notebooks.yml`) is green on `main` against the current pinned source.
 - [ ] Core `pyproject.toml`, `src/forecastability/__init__.py`, `CITATION.cff`, and `CHANGELOG.md` all agree on the target version.
 - [ ] Core `docs/releases/v<VERSION>.md` release notes file exists and is non-empty.
-- [ ] Sibling `pyproject.toml` `dependence-forecastability` pin is updated to `>= <VERSION>, <next-minor>`.
+- [ ] Sibling `pyproject.toml` and `uv.lock` agree. The final `dependence-forecastability>=<VERSION>,<next-minor>` pin bump happens after the core package is live on PyPI in Step 6.
 
 ## Notebook commit policy
 
@@ -44,15 +44,15 @@ notebooks immediately usable on GitHub without a local execution step.
 2. Confirm all CI checks are green.
 3. Merge (do not squash — preserve granular commit history).
 
-### Step 2 — Core RC1 tag (optional but recommended)
+### Step 2 — Core pre-flight ref
 
-1. In core: `git tag v<VERSION>rc1 && git push origin v<VERSION>rc1`
-2. The `publish-pypi.yml` workflow triggers and publishes to TestPyPI via Trusted Publishing.
-   - Environment required: `pypi` (GitHub environment with OIDC configured at <https://test.pypi.org>).
+Do **not** push a release-candidate tag unless the core publish workflow has been explicitly changed for TestPyPI. The current core `publish-pypi.yml` workflow publishes `v*` tags to production PyPI.
+
+Use a core branch or tag candidate as a `git+` source in the sibling pre-flight workflow. Use `source=testpypi` only when a maintainer has manually published a TestPyPI artifact for the same version.
 
 ### Step 3 — Sibling pre-flight (EX-REL-02)
 
-Run the pre-flight matrix in the sibling repo against the TestPyPI RC or a `git+` ref.
+Run the pre-flight matrix in the sibling repo against a `git+` ref before the final core release. If a TestPyPI artifact exists, the same workflow can also test that source.
 
 **Via GitHub Actions UI:**
 
@@ -63,21 +63,14 @@ Run the pre-flight matrix in the sibling repo against the TestPyPI RC or a `git+
 **Via CLI:**
 
 ```bash
-# TestPyPI source
+# git+ source — use core release branch or candidate tag
 gh workflow run preflight.yml \
   --repo AdamKrysztopa/forecastability-examples \
-  -f core_version=<VERSION>rc1 \
-  -f source=testpypi
-
-# git+ source (alternative — use core release branch or RC tag)
-gh workflow run preflight.yml \
-  --repo AdamKrysztopa/forecastability-examples \
-  -f core_version=v<VERSION>rc1 \
+  -f core_version=<core-release-branch-or-tag> \
   -f source=git
 ```
 
-**Acceptance gate:** Either `testpypi` or `git` matrix green satisfies the gate.
-Both green is preferred. Do not advance to Step 4 if both are red.
+**Acceptance gate:** the `git` matrix must be green before Step 4. If a TestPyPI artifact exists, run that matrix too; it is additional evidence, not a substitute for the git pre-flight.
 
 ### Step 4 — Core final tag and PyPI publish
 
@@ -85,7 +78,7 @@ Both green is preferred. Do not advance to Step 4 if both are red.
 2. `publish-pypi.yml` triggers:
    - Builds, lints, type-checks, tests, and publishes to PyPI via Trusted Publishing.
    - After successful publish, the `notify-sibling` job fires a `repository_dispatch`
-     (`event_type = core_release`, `client_payload.version = <VERSION>`) to this repo.
+     (`event_type = core_release`, with `client_payload.version`, `client_payload.tag`, and `client_payload.pypi_url`) to this repo.
    - **Requires secret:** `EXAMPLES_DISPATCH_TOKEN` — a PAT with `contents:write` scope on
      `AdamKrysztopa/forecastability-examples`, stored as a repository secret in the core repo.
 3. `release.yml` triggers in core: creates the GitHub release from `docs/releases/v<VERSION>.md`.
@@ -94,7 +87,7 @@ Both green is preferred. Do not advance to Step 4 if both are red.
 
 After Step 4, the sibling `.github/workflows/release.yml` auto-triggers on `repository_dispatch`.
 It runs the full notebook matrix against the new PyPI artifact and uploads executed notebooks
-as release assets named `release-notebooks-py<VER>-v<VERSION>`.
+as workflow artifacts named `release-notebooks-py<VER>-v<VERSION>`.
 
 Monitor at: <https://github.com/AdamKrysztopa/forecastability-examples/actions/workflows/release.yml>
 
@@ -117,7 +110,7 @@ gh workflow run release.yml \
 3. Execute all notebooks and commit everything (lockfile + pyproject + notebooks) with outputs —
    see the notebook commit policy above.
 4. `git tag v<VERSION> && git push origin v<VERSION>`
-5. The sibling release tag triggers artifact publishing (executed notebooks as release assets).
+5. The sibling release tag triggers the release handshake workflow and uploads executed notebooks as workflow artifacts.
 
 ---
 

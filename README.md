@@ -9,17 +9,19 @@ Tutorials, walkthroughs, and integrations for the [`dependence-forecastability`]
 
 ## Installation
 
-Install the core toolkit with any optional framework extras you need:
+Install the full examples environment from this repository:
 
 ```bash
-pip install "dependence-forecastability[darts,mlforecast]"
+uv sync --all-extras
 ```
 
-Or with `uv`:
+For a smaller environment, select only the framework extras you need:
 
 ```bash
-uv add dependence-forecastability
+uv sync --extra darts --extra mlforecast --extra dev
 ```
+
+The framework extras live in this examples project. The core `dependence-forecastability` package remains framework-agnostic.
 
 For the full examples environment (all extras + dev tooling):
 

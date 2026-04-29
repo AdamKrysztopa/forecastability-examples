@@ -3,6 +3,9 @@ name: Release Handshake
 on:
   repository_dispatch:
     types: [core_release]
+  push:
+    tags:
+      - "v*"
   workflow_dispatch:
     inputs:
       core_version:
@@ -35,8 +38,14 @@ jobs:
       - name: Resolve core version
         id: core-version
         run: |
+          set -euo pipefail
           VERSION="${{ github.event.client_payload.version || inputs.core_version }}"
+          if [ -z "${VERSION}" ]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          fi
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=${{ github.event.client_payload.tag || github.ref_name }}" >> "$GITHUB_OUTPUT"
+          echo "pypi_url=${{ github.event.client_payload.pypi_url }}" >> "$GITHUB_OUTPUT"
 
       - name: Install with specific core version
         run: |
@@ -49,6 +58,7 @@ jobs:
       - name: Execute notebooks
         timeout-minutes: 45
         run: |
+          set -euo pipefail
           NOTEBOOKS=$(find walkthroughs triage_walkthroughs recipes \
             -name '*.ipynb' 2>/dev/null)
           if [ -z "$NOTEBOOKS" ]; then
@@ -62,7 +72,7 @@ jobs:
             --ExecutePreprocessor.timeout=600 \
             $NOTEBOOKS
 
-      - name: Upload executed notebooks as release assets
+      - name: Upload executed notebooks as workflow artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
