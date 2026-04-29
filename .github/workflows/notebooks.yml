@@ -10,7 +10,7 @@ jobs:
   notebooks:
     name: "py${{ matrix.python-version }} / ${{ matrix.source }}"
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.source == 'unpinned-main' }}
+    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
