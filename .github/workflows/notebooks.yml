@@ -59,32 +59,18 @@ jobs:
         run: uv run python scripts/download_causal_rivers.py
 
       - name: Execute unexecuted notebooks
-        # Only run notebooks whose code cells have no outputs yet.
-        # Notebooks committed with outputs are skipped — re-running them in CI
-        # is expensive and unnecessary.
+        # scripts/find_unexecuted_notebooks.py prints paths of notebooks whose
+        # code cells have no outputs yet. Notebooks committed with outputs are
+        # skipped — re-running them in CI is expensive and unnecessary.
         timeout-minutes: 30
         run: |
-          UNEXECUTED=""
-          for nb in $(find walkthroughs triage_walkthroughs recipes \
-              -name '*.ipynb' 2>/dev/null); do
-            if python3 -c "
-import json, sys
-data = json.load(open(sys.argv[1]))
-code_cells = [c for c in data.get('cells', []) if c.get('cell_type') == 'code']
-has_out = any(bool(c.get('outputs')) or c.get('execution_count') is not None for c in code_cells)
-sys.exit(1 if has_out else 0)
-" "$nb" 2>/dev/null; then
-              echo "  unexecuted: $nb"
-              UNEXECUTED="$UNEXECUTED $nb"
-            else
-              echo "  has outputs (skip): $nb"
-            fi
-          done
+          UNEXECUTED=$(python3 scripts/find_unexecuted_notebooks.py)
           if [ -z "$UNEXECUTED" ]; then
             echo "All notebooks already have outputs — nothing to execute."
             exit 0
           fi
-          echo "Executing: $UNEXECUTED"
+          echo "Executing unexecuted notebooks:"
+          echo "$UNEXECUTED"
           uv run jupyter nbconvert \
             --to notebook \
             --execute \
