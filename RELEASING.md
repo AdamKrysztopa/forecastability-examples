@@ -108,10 +108,16 @@ gh workflow run release.yml \
 
 ### Step 6 — Sibling pin bump and release
 
-1. In the sibling repo, confirm `pyproject.toml` pins `dependence-forecastability>=<VERSION>,<next-minor>`.
-2. Execute all notebooks and commit with outputs (see notebook commit policy above).
-3. `git tag v<VERSION> && git push origin v<VERSION>`
-4. The sibling release tag triggers artifact publishing (executed notebooks as release assets).
+> **Important:** The pin bump must happen **after** the core package is live on PyPI (Step 4),
+> not before. Bumping the pin before publish will break the sibling CI because `uv sync` resolves
+> against PyPI and the new version won't be found.
+
+1. Bump `pyproject.toml` pin: `dependence-forecastability>=<VERSION>,<next-minor>`.
+2. Regenerate the lockfile: `uv lock`.
+3. Execute all notebooks and commit everything (lockfile + pyproject + notebooks) with outputs —
+   see the notebook commit policy above.
+4. `git tag v<VERSION> && git push origin v<VERSION>`
+5. The sibling release tag triggers artifact publishing (executed notebooks as release assets).
 
 ---
 
