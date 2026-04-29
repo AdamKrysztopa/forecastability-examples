@@ -6,8 +6,7 @@ readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.11"
 dependencies = [
-    # Will be updated to >=0.4.0,<0.5 after core 0.4.0 is published to PyPI (EX-R03).
-    "dependence-forecastability>=0.3.6,<0.5",
+    "dependence-forecastability>=0.4.0,<0.5",
     "tabulate>=0.10.0",
 ]
 

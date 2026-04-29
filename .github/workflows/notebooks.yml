@@ -39,7 +39,7 @@ jobs:
         run: |
           uv sync --no-install-project --all-extras
           uv pip install \
-            "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@chore/0-4-0-repos-split" \
+            "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@main" \
             --force-reinstall
 
       # --- CausalRivers data cache (EX-NB-DATA-02) ---

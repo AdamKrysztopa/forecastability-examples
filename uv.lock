@@ -1085,7 +1085,7 @@ wheels = [
 
 [[package]]
 name = "dependence-forecastability"
-version = "0.3.6"
+version = "0.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "matplotlib" },
@@ -1099,9 +1099,9 @@ dependencies = [
     { name = "statsmodels" },
     { name = "yfinance" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/19/89/182672bf29a60c00a755fdf91ae9f510ce0b79f2bb9482555289f4c4dea8/dependence_forecastability-0.3.6.tar.gz", hash = "sha256:05a3b43223b13534b0ced93238149cf82e1a516289e2a932587443950b7ed343", size = 2794018, upload-time = "2026-04-25T16:58:50.32Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c6/a9/965b999bf8377c5b01786e163a7898c43ca6db809f4e014e7bffc3bea13f/dependence_forecastability-0.4.0.tar.gz", hash = "sha256:4ab7f38946d7f5996f707c8702a3a1f7cb9a4ad01bb2a0c4d76e67c6785006a3", size = 2786469, upload-time = "2026-04-29T20:09:56.325Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/09/4c/ab68d833ed44d545f57170b2b1ce7d7d66e05c4d91d36abf6575dcf86a49/dependence_forecastability-0.3.6-py3-none-any.whl", hash = "sha256:b49a547dcb7bf7edd9cd102a8c9ba8a14011f20e1a9b438e6fccbf96b1d58ef3", size = 345253, upload-time = "2026-04-25T16:58:48.201Z" },
+    { url = "https://files.pythonhosted.org/packages/c5/0e/9779e139ef764184d37df7e52396f7fa136d325cd2cad0d3c0796fd7900b/dependence_forecastability-0.4.0-py3-none-any.whl", hash = "sha256:c86f21d59084b98ff6d25b3b891f06f09979988bd0aa9823680b7df7b0dd9404", size = 351246, upload-time = "2026-04-29T20:09:54.348Z" },
 ]
 
 [[package]]
@@ -1380,7 +1380,7 @@ statsforecast = [
 [package.metadata]
 requires-dist = [
     { name = "darts", marker = "extra == 'darts'", specifier = ">=0.30,<0.36" },
-    { name = "dependence-forecastability", specifier = ">=0.3.6,<0.5" },
+    { name = "dependence-forecastability", specifier = ">=0.4.0,<0.5" },
     { name = "forecastability-examples", extras = ["darts", "mlforecast", "statsforecast", "causal", "agent", "calendar", "dev"], marker = "extra == 'all'" },
     { name = "holidays", marker = "extra == 'calendar'", specifier = ">=0.50,<1" },
     { name = "ipykernel", marker = "extra == 'dev'", specifier = ">=6" },
