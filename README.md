@@ -23,12 +23,6 @@ uv sync --extra darts --extra mlforecast --extra dev
 
 The framework extras live in this examples project. The core `dependence-forecastability` package remains framework-agnostic.
 
-For the full examples environment (all extras + dev tooling):
-
-```bash
-uv sync --all-extras
-```
-
 ---
 
 ## Quick links
