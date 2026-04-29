@@ -58,21 +58,39 @@ jobs:
         if: steps.causal-rivers-cache.outputs.cache-hit != 'true'
         run: uv run python scripts/download_causal_rivers.py
 
-      - name: Execute notebooks
-        timeout-minutes: 45
+      - name: Execute unexecuted notebooks
+        # Only run notebooks whose code cells have no outputs yet.
+        # Notebooks committed with outputs are skipped — re-running them in CI
+        # is expensive and unnecessary.
+        timeout-minutes: 30
         run: |
-          NOTEBOOKS=$(find walkthroughs triage_walkthroughs recipes \
-            -name '*.ipynb' 2>/dev/null)
-          if [ -z "$NOTEBOOKS" ]; then
-            echo "No notebooks found — skipping execution (scaffold only)"
+          UNEXECUTED=""
+          for nb in $(find walkthroughs triage_walkthroughs recipes \
+              -name '*.ipynb' 2>/dev/null); do
+            if python3 -c "
+import json, sys
+data = json.load(open(sys.argv[1]))
+code_cells = [c for c in data.get('cells', []) if c.get('cell_type') == 'code']
+has_out = any(bool(c.get('outputs')) or c.get('execution_count') is not None for c in code_cells)
+sys.exit(1 if has_out else 0)
+" "$nb" 2>/dev/null; then
+              echo "  unexecuted: $nb"
+              UNEXECUTED="$UNEXECUTED $nb"
+            else
+              echo "  has outputs (skip): $nb"
+            fi
+          done
+          if [ -z "$UNEXECUTED" ]; then
+            echo "All notebooks already have outputs — nothing to execute."
             exit 0
           fi
+          echo "Executing: $UNEXECUTED"
           uv run jupyter nbconvert \
             --to notebook \
             --execute \
             --inplace \
             --ExecutePreprocessor.timeout=600 \
-            $NOTEBOOKS
+            $UNEXECUTED
 
       - name: Upload executed notebooks as artifacts
         if: always()
