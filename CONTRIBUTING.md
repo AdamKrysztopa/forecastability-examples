@@ -19,25 +19,25 @@ uv run jupyter lab
 
 ## Notebook authoring policy (EX-NB-EXEC-01)
 
-**Commit notebooks with cleared outputs.** Never commit executed cell outputs.
-
-Rationale: executed outputs create large diffs and stale HTML; CI re-executes every notebook
-and uploads executed versions as build artifacts on each push.
-
-Before committing:
+**Commit notebooks with executed outputs** (with data). Execute all notebooks before committing:
 
 ```bash
-uv run jupyter nbconvert --to notebook --clear-output --inplace walkthroughs/*.ipynb
+uv run jupyter nbconvert \
+  --to notebook \
+  --execute \
+  --inplace \
+  --ExecutePreprocessor.timeout=600 \
+  walkthroughs/*.ipynb \
+  triage_walkthroughs/*.ipynb \
+  recipes/**/*.ipynb
 ```
 
-CI runs:
+Having outputs in the repo makes notebooks immediately usable on GitHub without a local
+execution step. CI also re-executes notebooks on every push and uploads executed versions as
+build artifacts.
 
-```bash
-uv run jupyter nbconvert --to notebook --execute --inplace walkthroughs/*.ipynb triage_walkthroughs/*.ipynb
-```
-
-Executed notebooks are uploaded as GitHub Actions artifacts on each successful run.
-On releases, they are published as release assets.
+Before opening a PR, verify notebooks execute cleanly on a fresh `uv sync --all-extras`
+environment and re-commit the executed outputs.
 
 ## Import surface constraint
 

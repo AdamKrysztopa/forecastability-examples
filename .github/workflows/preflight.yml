@@ -1,0 +1,140 @@
+name: Pre-flight Matrix (EX-REL-02)
+
+# Triggered manually before cutting a core release.
+# Run against either TestPyPI or git+ source; both green is preferred.
+# Either green satisfies the EX-REL-01 acceptance gate.
+#
+# Usage (from RELEASING.md Step 2):
+#   gh workflow run preflight.yml \
+#     -f core_version=0.4.0rc1 \
+#     -f source=testpypi
+#
+#   gh workflow run preflight.yml \
+#     -f core_version=main \
+#     -f source=git
+
+on:
+  workflow_dispatch:
+    inputs:
+      core_version:
+        description: >
+          Core version or git ref to test against.
+          For testpypi: use a version string like "0.4.0rc1".
+          For git: use a branch or tag like "main" or "v0.4.0rc1".
+        required: true
+        default: "main"
+      source:
+        description: "Package source to use"
+        required: true
+        default: "git"
+        type: choice
+        options:
+          - testpypi
+          - git
+
+concurrency:
+  group: preflight-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    name: "preflight py${{ matrix.python-version }} / ${{ inputs.source }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ">=0.5"
+
+      # ------------------------------------------------------------------ #
+      # Source: TestPyPI                                                     #
+      # ------------------------------------------------------------------ #
+      - name: Install (TestPyPI source)
+        if: inputs.source == 'testpypi'
+        run: |
+          set -euo pipefail
+          uv sync --no-install-project --all-extras
+          uv pip install \
+            "dependence-forecastability==${{ inputs.core_version }}" \
+            --index-url https://test.pypi.org/simple/ \
+            --extra-index-url https://pypi.org/simple/ \
+            --force-reinstall
+
+      # ------------------------------------------------------------------ #
+      # Source: git+                                                         #
+      # ------------------------------------------------------------------ #
+      - name: Install (git+ source)
+        if: inputs.source == 'git'
+        run: |
+          set -euo pipefail
+          uv sync --no-install-project --all-extras
+          uv pip install \
+            "dependence-forecastability @ git+https://github.com/AdamKrysztopa/dependence-forecastability.git@${{ inputs.core_version }}" \
+            --force-reinstall
+
+      # ------------------------------------------------------------------ #
+      # CausalRivers data (cache)                                            #
+      # ------------------------------------------------------------------ #
+      - name: Restore CausalRivers parquet cache
+        id: causal-rivers-cache
+        uses: actions/cache@v4
+        with:
+          path: data/causal_rivers
+          key: causal-rivers-${{ hashFiles('data/causal_rivers/east_germany_8stations_6h.sha256') }}
+          restore-keys: |
+            causal-rivers-
+
+      - name: Fetch CausalRivers data (cache miss)
+        if: steps.causal-rivers-cache.outputs.cache-hit != 'true'
+        run: uv run python scripts/download_causal_rivers.py
+
+      # ------------------------------------------------------------------ #
+      # Execute notebooks                                                    #
+      # ------------------------------------------------------------------ #
+      - name: Verify installed core version
+        run: |
+          set -euo pipefail
+          uv run python -c "import forecastability; print('forecastability', forecastability.__version__)"
+
+      - name: Execute notebooks
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          NOTEBOOKS=$(find walkthroughs triage_walkthroughs recipes \
+            -name '*.ipynb' 2>/dev/null | sort)
+          if [ -z "$NOTEBOOKS" ]; then
+            echo "No notebooks found — skipping (scaffold only)"
+            exit 0
+          fi
+          echo "Executing notebooks:"
+          echo "$NOTEBOOKS"
+          uv run jupyter nbconvert \
+            --to notebook \
+            --execute \
+            --inplace \
+            --ExecutePreprocessor.timeout=600 \
+            $NOTEBOOKS
+
+      - name: Upload executed notebooks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "preflight-notebooks-py${{ matrix.python-version }}-${{ inputs.source }}-${{ inputs.core_version }}"
+          path: |
+            walkthroughs/*.ipynb
+            triage_walkthroughs/*.ipynb
+            recipes/**/*.ipynb
+          if-no-files-found: ignore
+          retention-days: 14
