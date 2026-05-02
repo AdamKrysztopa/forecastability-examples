@@ -1,0 +1,47 @@
+{
+  "contract_version": "0.3.4",
+  "source_goal": "univariate",
+  "blocked": false,
+  "readiness_status": "clear",
+  "forecastability_class": "high",
+  "confidence_label": "medium",
+  "target_frequency": "MS",
+  "horizon": 12,
+  "recommended_target_lags": [
+    1
+  ],
+  "recommended_seasonal_lags": [],
+  "excluded_target_lags": [],
+  "lag_rationale": [
+    "lag 1 is the strongest non-seasonal lag"
+  ],
+  "candidate_seasonal_periods": [],
+  "recommended_families": [
+    "arima",
+    "ets",
+    "linear_state_space"
+  ],
+  "baseline_families": [
+    "naive",
+    "seasonal_naive"
+  ],
+  "past_covariates": [],
+  "future_covariates": [],
+  "static_features": [],
+  "rejected_covariates": [],
+  "covariate_notes": [],
+  "transformation_hints": [],
+  "caution_flags": [
+    "short_information_horizon"
+  ],
+  "downstream_notes": [
+    "Mostly linear monotonic decay with strong direct lag structure."
+  ],
+  "calendar_features": [],
+  "calendar_locale": null,
+  "metadata": {
+    "lag_rows": 1,
+    "covariate_rows": 0,
+    "family_rows": 6
+  }
+}

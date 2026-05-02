@@ -1,0 +1,4 @@
+Model,sMAPE (%),MAE,Lags used,Source
+sklearn Ridge,115.04,0.8156,[1],ForecastPrepContract
+MLForecast LGBMRegressor,195.26,1.1738,[1],ForecastPrepContract
+Darts LightGBMModel,107.90,0.7239,[1],ForecastPrepContract
