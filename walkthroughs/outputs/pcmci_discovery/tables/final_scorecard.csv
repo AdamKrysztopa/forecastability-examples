@@ -1,0 +1,9 @@
+driver,role,retention_ratio,fast_verdict,fast_correct,pcmci+_verdict,pcmci+_correct,pcmci_ami_verdict,pcmci_ami_correct
+st_979,positive,0.414,KEEP,True,KEEP,True,N/A,
+st_1095,positive,0.402,KEEP,True,DROP,False,N/A,
+st_313,positive,0.336,KEEP,True,DROP,False,N/A,
+st_758,positive,0.312,KEEP,True,DROP,False,N/A,
+st_490,positive,0.311,KEEP,True,DROP,False,N/A,
+st_67,negative,0.254,DROP,True,DROP,True,N/A,
+st_71,negative,0.264,DROP,True,DROP,True,N/A,
+st_99,negative,0.243,DROP,True,DROP,True,N/A,
