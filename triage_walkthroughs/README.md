@@ -2,6 +2,8 @@
 
 Focused forecastability triage notebooks — each demonstrating one triage capability in depth.
 
+The extended fingerprint notebook remains AMI-first: additive spectral, ordinal, classical, and memory diagnostics are read around the lag-geometry cue rather than treated as a substitute for it.
+
 | Notebook | Description |
 | --- | --- |
 | [01_forecastability_profile_walkthrough.ipynb](01_forecastability_profile_walkthrough.ipynb) | Forecastability profile — F1 deep dive into horizon-by-horizon AMI structure |
@@ -10,5 +12,6 @@ Focused forecastability triage notebooks — each demonstrating one triage capab
 | [04_spectral_and_entropy_diagnostics.ipynb](04_spectral_and_entropy_diagnostics.ipynb) | Spectral and entropy diagnostics — N4, seasonality structure and permutation entropy |
 | [05_batch_and_exogenous_workbench.ipynb](05_batch_and_exogenous_workbench.ipynb) | Batch ranking and exogenous screening workbench — F7/F8, multi-series and driver comparison |
 | [06_agent_ready_triage_interpretation.ipynb](06_agent_ready_triage_interpretation.ipynb) | Agent-ready triage interpretation — deterministic deep dive and agent-payload construction |
+| [07_extended_forecastability_fingerprint.ipynb](07_extended_forecastability_fingerprint.ipynb) | AMI-first interpretation of the additive spectral, ordinal, classical, and memory diagnostics around the extended fingerprint |
 
 See also the [walkthroughs](../walkthroughs/) and [recipes](../recipes/).

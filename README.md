@@ -37,6 +37,8 @@ The framework extras live in this examples project. The core `dependence-forecas
 
 ## Notebook index
 
+The extended fingerprint notebooks remain AMI-first: spectral, ordinal, classical, and memory diagnostics add context around lag geometry rather than replacing it, and they stop before any downstream model fitting.
+
 ### Walkthroughs
 
 | Notebook | Description | Dataset |
@@ -53,6 +55,7 @@ The framework extras live in this examples project. The core `dependence-forecas
 | [`walkthroughs/05_forecast_prep_to_models.ipynb`](walkthroughs/05_forecast_prep_to_models.ipynb) | Triage → `ForecastPrepContract` → Darts / MLForecast / sklearn | Air Passengers |
 | [`walkthroughs/06_triage_driven_vs_naive_on_m4.ipynb`](walkthroughs/06_triage_driven_vs_naive_on_m4.ipynb) | Triage-driven model selection vs SeasonalNaive on M4 monthly | M4 monthly (≤ 200 series) |
 | [`walkthroughs/07_causal_rivers_lag_and_feature_selection.ipynb`](walkthroughs/07_causal_rivers_lag_and_feature_selection.ipynb) | Deterministic lag & feature selection on CausalRivers benchmark | CausalRivers (East Germany) |
+| [`walkthroughs/08_extended_forecastability_showcase.ipynb`](walkthroughs/08_extended_forecastability_showcase.ipynb) | AMI-first extended forecastability showcase across the deterministic seven-series panel | Synthetic |
 
 ### Triage walkthroughs
 
@@ -64,6 +67,7 @@ The framework extras live in this examples project. The core `dependence-forecas
 | [`triage_walkthroughs/04_spectral_and_entropy_diagnostics.ipynb`](triage_walkthroughs/04_spectral_and_entropy_diagnostics.ipynb) | F4/F6 — Spectral predictability and entropy diagnostics |
 | [`triage_walkthroughs/05_batch_and_exogenous_workbench.ipynb`](triage_walkthroughs/05_batch_and_exogenous_workbench.ipynb) | F7/F8 — Batch multi-signal ranking and enhanced exogenous screening |
 | [`triage_walkthroughs/06_agent_ready_triage_interpretation.ipynb`](triage_walkthroughs/06_agent_ready_triage_interpretation.ipynb) | Agent-ready triage interpretation and narration |
+| [`triage_walkthroughs/07_extended_forecastability_fingerprint.ipynb`](triage_walkthroughs/07_extended_forecastability_fingerprint.ipynb) | AMI-first interpretation of the additive spectral, ordinal, classical, and memory diagnostics around the extended fingerprint |
 
 ### Recipes
 
