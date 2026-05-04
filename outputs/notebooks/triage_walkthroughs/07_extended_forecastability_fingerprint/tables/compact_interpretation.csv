@@ -1,0 +1,5 @@
+target_name,signal_to_noise,information_horizon,spectral_predictability,periodicity_hint,ordinal_redundancy,complexity_class,seasonal_strength,trend_strength,dfa_alpha,memory_type,predictability_sources
+white_noise,0.218771612753844,0,0.08038648803809623,none,0.0046781260300985394,noise_like,,0.0015182578975011518,0.4988184650592493,short_memory,", -"
+seasonal_plus_noise,0.7831159473390404,18,0.47005003031256376,weak,0.0062278266021030815,noise_like,0.6911412287775709,0.0028475028681356207,0.5235385131014998,short_memory,", -"
+long_memory_candidate,0.5658805378198396,4,0.1432572711322615,none,0.008648762349522388,noise_like,,0.008119932495168514,0.9422361761670669,long_memory_candidate,", -"
+henon_map,0.9695924060043679,18,0.19646721325490113,none,0.4041233006821935,complex_but_redundant,,0.00030874438668149207,0.21610513365898704,anti_persistent,", -"

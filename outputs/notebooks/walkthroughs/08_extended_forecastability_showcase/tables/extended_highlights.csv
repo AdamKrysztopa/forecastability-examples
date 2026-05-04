@@ -1,0 +1,8 @@
+target_name,expected_story,predictability_sources,recommended_model_families,avoid_model_families,summary
+white_noise,Lag geometry and the additive diagnostics should stay weak enough to keep the route on simple baseline families.,", -",", -",", -","Peak forecastability at horizon 2, 0 informative horizon(s) identified."
+clean_sine_wave,"AMI geometry should show stable repeating structure, with spectral and seasonality diagnostics reinforcing the recurring signal story.",", -",", -",", -","Peak forecastability at horizon 6, 18 informative horizon(s) identified."
+seasonal_plus_noise,AMI should retain usable seasonal signal while the additive diagnostics show a noisier but still seasonal structure than the clean sine case.,", -",", -",", -","Peak forecastability at horizon 6, 10 informative horizon(s) identified."
+ar1,AMI should detect lag dependence with a compact autoregressive routing story rather than a seasonal or nonlinear one.,", -",", -",", -","Peak forecastability at horizon 1, 4 informative horizon(s) identified."
+trend_plus_noise,The AMI-first view should show lagged structure while the classical block surfaces trend-dominated nonstationarity.,", -",", -",", -","Peak forecastability at horizon 3, 18 informative horizon(s) identified."
+long_memory_candidate,AMI should retain a short lag-dependence cue while the memory block adds a persistence-across-scales cue rather than replacing the AMI-first story.,", -",", -",", -","Peak forecastability at horizon 1, 4 informative horizon(s) identified."
+henon_map,AMI should remain the primary gate while ordinal redundancy provides the strongest nonlinear cue in the panel beyond the seasonal sine examples.,", -",", -",", -","Peak forecastability at horizon 1, 18 informative horizon(s) identified."
