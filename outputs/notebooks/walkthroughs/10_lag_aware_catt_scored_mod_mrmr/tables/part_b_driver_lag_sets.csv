@@ -1,0 +1,8 @@
+driver,station_id,role,fast_selected_lags,scientific_selected_lags
+station_1095,1095,positive,"[4, 5]",[4]
+station_313,313,positive,[4],[4]
+station_490,490,positive,[4],[4]
+station_67,67,negative/control,[4],[5]
+station_71,71,negative/control,"[5, 8]","[4, 6, 8]"
+station_758,758,positive,"[4, 5, 7]","[4, 5, 8, 12]"
+station_99,99,negative/control,"[11, 12]",[11]

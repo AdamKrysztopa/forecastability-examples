@@ -56,6 +56,8 @@ The extended fingerprint notebooks remain AMI-first: spectral, ordinal, classica
 | [`walkthroughs/06_triage_driven_vs_naive_on_m4.ipynb`](walkthroughs/06_triage_driven_vs_naive_on_m4.ipynb) | Triage-driven model selection vs SeasonalNaive on M4 monthly | M4 monthly (≤ 200 series) |
 | [`walkthroughs/07_causal_rivers_lag_and_feature_selection.ipynb`](walkthroughs/07_causal_rivers_lag_and_feature_selection.ipynb) | Deterministic lag & feature selection on CausalRivers benchmark | CausalRivers (East Germany) |
 | [`walkthroughs/08_extended_forecastability_showcase.ipynb`](walkthroughs/08_extended_forecastability_showcase.ipynb) | AMI-first extended forecastability showcase across the deterministic seven-series panel | Synthetic |
+| [`walkthroughs/09_lag_aware_mod_mrmr_showcase.ipynb`](walkthroughs/09_lag_aware_mod_mrmr_showcase.ipynb) | Synthetic lag-aware ModMRMR showcase in fast mode with legality, duplicate suppression, and target-history novelty comparisons | Synthetic |
+| [`walkthroughs/10_lag_aware_catt_scored_mod_mrmr.ipynb`](walkthroughs/10_lag_aware_catt_scored_mod_mrmr.ipynb) | Two-part walkthrough with a controlled synthetic benchmark and CausalRivers applied plausibility pass, comparing fast vs Catt-scored scientific mode | Synthetic + CausalRivers (East Germany) |
 
 ### Triage walkthroughs
 
@@ -74,6 +76,7 @@ The extended fingerprint notebooks remain AMI-first: spectral, ordinal, classica
 | Notebook | Description |
 | --- | --- |
 | [`recipes/contract_roundtrip.ipynb`](recipes/contract_roundtrip.ipynb) | `ForecastPrepContract` JSON roundtrip — serialize, deserialize, re-validate |
+| [`recipes/lag_aware_mod_mrmr_to_forecast_prep_contract.ipynb`](recipes/lag_aware_mod_mrmr_to_forecast_prep_contract.ipynb) | Hand off lag-aware selected covariates into `ForecastPrepContract` |
 
 ---
 

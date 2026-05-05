@@ -1,0 +1,4 @@
+mode,positive_drivers_selected,negative_drivers_selected,positive_lag_count,negative_lag_count
+notebook_07_reference,5,0,5,0
+fast_mode,4,3,7,5
+scientific_catt_mode,4,3,7,5

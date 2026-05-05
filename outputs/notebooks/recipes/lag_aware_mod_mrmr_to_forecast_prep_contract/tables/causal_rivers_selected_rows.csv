@@ -1,0 +1,13 @@
+feature_name,covariate_name,role,lag,selection_rank,final_score
+x_station_71_lag4,station_71,negative/control,4,1,0.6081211419753086
+x_station_490_lag4,station_490,positive,4,2,0.18196488171139316
+x_station_758_lag4,station_758,positive,4,3,0.12756250724511678
+x_station_1095_lag4,station_1095,positive,4,4,0.07102195542079641
+x_station_313_lag4,station_313,positive,4,5,0.04002927027183678
+x_station_99_lag11,station_99,negative/control,11,6,0.030893064793079465
+x_station_67_lag5,station_67,negative/control,5,7,0.0279724902915435
+x_station_758_lag12,station_758,positive,12,8,0.02748333170318207
+x_station_71_lag6,station_71,negative/control,6,9,0.025012878949796175
+x_station_758_lag8,station_758,positive,8,10,0.02311399798827257
+x_station_758_lag5,station_758,positive,5,11,0.022278734133194217
+x_station_71_lag8,station_71,negative/control,8,12,0.020275006520605106

@@ -1,0 +1,14 @@
+driver,axis,role,lag,selected_for_handoff,rationale,feature_name,future_known_required,known_future_provenance,kind
+target,target,direct,1,True,lag 1 is the strongest non-seasonal lag,,,,
+station_1095,past,past,4,True,lag-aware ModMRMR selected sparse measured lags: [4],x_station_1095_lag4,False,,measured
+station_313,past,past,4,True,lag-aware ModMRMR selected sparse measured lags: [4],x_station_313_lag4,False,,measured
+station_490,past,past,4,True,lag-aware ModMRMR selected sparse measured lags: [4],x_station_490_lag4,False,,measured
+station_67,past,past,5,True,lag-aware ModMRMR selected sparse measured lags: [5],x_station_67_lag5,False,,measured
+station_71,past,past,4,True,"lag-aware ModMRMR selected sparse measured lags: [4, 6, 8]",x_station_71_lag4,False,,measured
+station_71,past,past,6,True,"lag-aware ModMRMR selected sparse measured lags: [4, 6, 8]",x_station_71_lag6,False,,measured
+station_71,past,past,8,True,"lag-aware ModMRMR selected sparse measured lags: [4, 6, 8]",x_station_71_lag8,False,,measured
+station_758,past,past,4,True,"lag-aware ModMRMR selected sparse measured lags: [4, 5, 8, 12]",x_station_758_lag4,False,,measured
+station_758,past,past,5,True,"lag-aware ModMRMR selected sparse measured lags: [4, 5, 8, 12]",x_station_758_lag5,False,,measured
+station_758,past,past,8,True,"lag-aware ModMRMR selected sparse measured lags: [4, 5, 8, 12]",x_station_758_lag8,False,,measured
+station_758,past,past,12,True,"lag-aware ModMRMR selected sparse measured lags: [4, 5, 8, 12]",x_station_758_lag12,False,,measured
+station_99,past,past,11,True,lag-aware ModMRMR selected sparse measured lags: [11],x_station_99_lag11,False,,measured

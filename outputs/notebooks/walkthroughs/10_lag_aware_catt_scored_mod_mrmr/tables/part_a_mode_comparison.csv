@@ -1,0 +1,10 @@
+feature_name,fast_mode,scientific_catt_mode
+x_calendar_flag_lag1,1,0
+x_calendar_flag_lag2,1,1
+x_calendar_flag_lag5,0,1
+x_calendar_flag_lag6,0,1
+x_driver_direct_lag10,1,0
+x_driver_direct_lag4,0,1
+x_driver_secondary_lag6,1,1
+x_driver_secondary_lag8,1,0
+x_noise_sensor_lag6,1,1

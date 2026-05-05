@@ -1,0 +1,14 @@
+feature_name,relevance_only,mod_mrmr_no_target_history,full_mod_mrmr,full_selection_rank
+x_calendar_flag_lag2,0,0,1,6.0
+x_calendar_flag_lag3,0,1,1,3.0
+x_driver_direct_lag4,1,0,0,
+x_driver_direct_lag5,1,0,0,
+x_driver_direct_lag6,1,0,0,
+x_driver_direct_lag7,0,0,1,4.0
+x_driver_secondary_lag7,0,1,1,1.0
+x_noise_sensor_lag5,0,1,1,2.0
+x_sensor_lag_neighbour_lag4,1,1,0,
+x_sensor_near_dup_lag4,1,0,0,
+x_sensor_near_dup_lag5,1,1,0,
+x_sensor_near_dup_lag7,0,0,1,5.0
+x_target_proxy_lag4,0,1,0,

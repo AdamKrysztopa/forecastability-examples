@@ -19,5 +19,7 @@ The extended fingerprint walkthroughs remain AMI-first: additive diagnostics exp
 | [06_triage_driven_vs_naive_on_m4.ipynb](06_triage_driven_vs_naive_on_m4.ipynb) | Triage-driven model-family selection vs SeasonalNaive on M4 monthly subset (≤ 200 series) |
 | [07_causal_rivers_lag_and_feature_selection.ipynb](07_causal_rivers_lag_and_feature_selection.ipynb) | Capability demo on the CausalRivers benchmark — self-lag and exogenous lag selection recovering graph-verified positives and rejecting negative controls |
 | [08_extended_forecastability_showcase.ipynb](08_extended_forecastability_showcase.ipynb) | AMI-first extended forecastability showcase across the deterministic seven-series panel; writes sibling-repo figures and tables when run locally |
+| [09_lag_aware_mod_mrmr_showcase.ipynb](09_lag_aware_mod_mrmr_showcase.ipynb) | Synthetic lag-aware ModMRMR showcase in fast mode with legality, duplicate suppression, and target-history novelty comparisons |
+| [10_lag_aware_catt_scored_mod_mrmr.ipynb](10_lag_aware_catt_scored_mod_mrmr.ipynb) | Two-part walkthrough with a controlled synthetic benchmark and CausalRivers applied plausibility pass, comparing fast vs Catt-scored scientific mode |
 
 See also the [triage walkthroughs](../triage_walkthroughs/) and [recipes](../recipes/).

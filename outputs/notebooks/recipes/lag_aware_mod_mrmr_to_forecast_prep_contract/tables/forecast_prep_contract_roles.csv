@@ -1,0 +1,3 @@
+bucket,names
+past_covariates,"['noise_sensor', 'promo_index']"
+future_covariates,['calendar_flag']

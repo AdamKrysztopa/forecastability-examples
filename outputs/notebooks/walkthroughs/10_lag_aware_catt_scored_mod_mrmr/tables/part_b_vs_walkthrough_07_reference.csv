@@ -1,0 +1,8 @@
+driver,role,notebook_07_contract_expectation,notebook_07_selected_lags,notebook_07_legal_lags_in_this_window,fast_selected_lags,scientific_selected_lags,fast_overlap_with_notebook_07,scientific_overlap_with_notebook_07,fast_selected_driver,scientific_selected_driver,fast_matches_notebook_07_contract,scientific_matches_notebook_07_contract
+station_1095,positive,keep,"[1, 8, 20]",[8],"[4, 5]",[4],[],[],True,True,True,True
+station_313,positive,keep,"[1, 4, 8]","[4, 8]",[4],[4],[4],[4],True,True,True,True
+station_490,positive,keep,"[1, 9, 17]",[9],[4],[4],[],[],True,True,True,True
+station_67,negative/control,drop,"[2, 6, 8]","[6, 8]",[4],[5],[],[],True,True,False,False
+station_71,negative/control,drop,"[3, 14, 19]",[],"[5, 8]","[4, 6, 8]",[],[],True,True,False,False
+station_758,positive,keep,"[1, 12, 20]",[12],"[4, 5, 7]","[4, 5, 8, 12]",[],[12],True,True,True,True
+station_99,negative/control,drop,"[3, 14, 20]",[],"[11, 12]",[11],[],[],True,True,False,False

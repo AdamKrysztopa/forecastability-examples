@@ -1,0 +1,23 @@
+variant,driver,role,selected_lags,lag_feature_count,total_importance
+fast_raw,station_1095,positive,"[4, 5]",2,419
+fast_raw,station_313,positive,[4],1,380
+fast_raw,station_490,positive,[4],1,279
+fast_raw,station_67,negative/control,[4],1,242
+fast_raw,station_71,negative/control,"[5, 8]",2,426
+fast_raw,station_758,positive,"[4, 5, 7]",3,496
+fast_raw,station_99,negative/control,"[11, 12]",2,373
+scientific_raw,station_1095,positive,[4],1,308
+scientific_raw,station_313,positive,[4],1,364
+scientific_raw,station_490,positive,[4],1,264
+scientific_raw,station_67,negative/control,[5],1,195
+scientific_raw,station_71,negative/control,"[4, 6, 8]",3,449
+scientific_raw,station_758,positive,"[4, 5, 8, 12]",4,781
+scientific_raw,station_99,negative/control,[11],1,292
+scientific_drop_known_negatives,station_1095,positive,[4],1,448
+scientific_drop_known_negatives,station_313,positive,[4],1,427
+scientific_drop_known_negatives,station_490,positive,[4],1,331
+scientific_drop_known_negatives,station_758,positive,"[4, 5, 8, 12]",4,1263
+notebook_07_reference_legal_window,station_1095,positive,[8],1,423
+notebook_07_reference_legal_window,station_313,positive,"[4, 8]",2,1050
+notebook_07_reference_legal_window,station_490,positive,[9],1,364
+notebook_07_reference_legal_window,station_758,positive,[12],1,436

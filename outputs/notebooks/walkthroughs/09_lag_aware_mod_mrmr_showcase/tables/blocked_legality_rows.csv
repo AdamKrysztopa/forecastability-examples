@@ -1,0 +1,19 @@
+feature_name,covariate_name,lag,known_future,known_future_provenance,legality_reason,block_reason
+x_driver_direct_lag1,driver_direct,1,False,,blocked_lag_too_small,lag=1 < forecast_horizon=3 + availability_margin=1
+x_driver_direct_lag2,driver_direct,2,False,,blocked_lag_too_small,lag=2 < forecast_horizon=3 + availability_margin=1
+x_driver_direct_lag3,driver_direct,3,False,,blocked_lag_too_small,lag=3 < forecast_horizon=3 + availability_margin=1
+x_driver_secondary_lag1,driver_secondary,1,False,,blocked_lag_too_small,lag=1 < forecast_horizon=3 + availability_margin=1
+x_driver_secondary_lag2,driver_secondary,2,False,,blocked_lag_too_small,lag=2 < forecast_horizon=3 + availability_margin=1
+x_driver_secondary_lag3,driver_secondary,3,False,,blocked_lag_too_small,lag=3 < forecast_horizon=3 + availability_margin=1
+x_noise_sensor_lag1,noise_sensor,1,False,,blocked_lag_too_small,lag=1 < forecast_horizon=3 + availability_margin=1
+x_noise_sensor_lag2,noise_sensor,2,False,,blocked_lag_too_small,lag=2 < forecast_horizon=3 + availability_margin=1
+x_noise_sensor_lag3,noise_sensor,3,False,,blocked_lag_too_small,lag=3 < forecast_horizon=3 + availability_margin=1
+x_sensor_lag_neighbour_lag1,sensor_lag_neighbour,1,False,,blocked_lag_too_small,lag=1 < forecast_horizon=3 + availability_margin=1
+x_sensor_lag_neighbour_lag2,sensor_lag_neighbour,2,False,,blocked_lag_too_small,lag=2 < forecast_horizon=3 + availability_margin=1
+x_sensor_lag_neighbour_lag3,sensor_lag_neighbour,3,False,,blocked_lag_too_small,lag=3 < forecast_horizon=3 + availability_margin=1
+x_sensor_near_dup_lag1,sensor_near_dup,1,False,,blocked_lag_too_small,lag=1 < forecast_horizon=3 + availability_margin=1
+x_sensor_near_dup_lag2,sensor_near_dup,2,False,,blocked_lag_too_small,lag=2 < forecast_horizon=3 + availability_margin=1
+x_sensor_near_dup_lag3,sensor_near_dup,3,False,,blocked_lag_too_small,lag=3 < forecast_horizon=3 + availability_margin=1
+x_target_proxy_lag1,target_proxy,1,False,,blocked_lag_too_small,lag=1 < forecast_horizon=3 + availability_margin=1
+x_target_proxy_lag2,target_proxy,2,False,,blocked_lag_too_small,lag=2 < forecast_horizon=3 + availability_margin=1
+x_target_proxy_lag3,target_proxy,3,False,,blocked_lag_too_small,lag=3 < forecast_horizon=3 + availability_margin=1

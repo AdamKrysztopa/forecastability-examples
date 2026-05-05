@@ -1,0 +1,13 @@
+mode,feature_name,covariate_name,lag,known_future,known_future_provenance,selection_rank,relevance,max_redundancy,target_history_redundancy,final_score
+fast_mode,x_driver_secondary_lag6,driver_secondary,6,False,,1,0.9038461538461539,0.0,0.2948717948717949,0.6373274161735699
+fast_mode,x_noise_sensor_lag6,noise_sensor,6,False,,2,0.34615384615384615,0.2171945701357466,0.14743589743589744,0.23102024150579667
+fast_mode,x_calendar_flag_lag1,calendar_flag,1,True,calendar,3,0.5192307692307693,0.33559577677224733,0.36538461538461536,0.21892905432541707
+fast_mode,x_driver_direct_lag10,driver_direct,10,False,,4,0.6346153846153846,0.5294117647058824,0.5897435897435898,0.12252001392272885
+fast_mode,x_driver_secondary_lag8,driver_secondary,8,False,,5,0.6923076923076923,0.8921568627450981,0.21153846153846154,0.058867037939436095
+fast_mode,x_calendar_flag_lag2,calendar_flag,2,True,calendar,6,0.5,0.8740573152337858,0.358974358974359,0.04036624511737633
+scientific_catt_mode,x_driver_secondary_lag6,driver_secondary,6,False,,1,0.9038461538461539,0.0,0.22435897435897437,0.701060157790927
+scientific_catt_mode,x_calendar_flag_lag2,calendar_flag,2,True,calendar,2,0.5,0.24358974358974358,0.34615384615384615,0.24728796844181458
+scientific_catt_mode,x_driver_direct_lag4,driver_direct,4,False,,3,1.0,0.5603318250377074,0.47435897435897434,0.2311076304288974
+scientific_catt_mode,x_noise_sensor_lag6,noise_sensor,6,False,,4,0.34615384615384615,0.39668174962292607,0.26282051282051283,0.153953251760422
+scientific_catt_mode,x_calendar_flag_lag5,calendar_flag,5,True,calendar,5,0.4807692307692308,0.7903469079939668,0.4551282051282051,0.05492021949122543
+scientific_catt_mode,x_calendar_flag_lag6,calendar_flag,6,True,calendar,6,0.4423076923076923,0.7733785822021116,0.4807692307692308,0.05204582117325763

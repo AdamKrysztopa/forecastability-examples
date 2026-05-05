@@ -7,6 +7,7 @@ Short, focused integration snippets showing how to wire `forecastability` output
 | Notebook | Description |
 | --- | --- |
 | [contract_roundtrip.ipynb](contract_roundtrip.ipynb) | `ForecastPrepContract` round-trip — `model_dump_json()` → disk → `model_validate_json()` without re-importing `forecastability` |
+| [lag_aware_mod_mrmr_to_forecast_prep_contract.ipynb](lag_aware_mod_mrmr_to_forecast_prep_contract.ipynb) | Hand off lag-aware selected covariates into `ForecastPrepContract` |
 
 ## Cross-repo links
 

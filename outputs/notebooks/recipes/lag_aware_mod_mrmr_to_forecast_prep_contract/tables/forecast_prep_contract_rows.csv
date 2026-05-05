@@ -1,0 +1,6 @@
+driver,axis,role,lag,selected_for_handoff,rationale,feature_name,future_known_required,known_future_provenance,kind
+target,target,direct,1,True,lag 1 is the strongest non-seasonal lag,,,,
+noise_sensor,past,past,2,True,"lag-aware ModMRMR selected sparse measured lags: [2, 3]",x_noise_sensor_lag2,False,,measured
+noise_sensor,past,past,3,True,"lag-aware ModMRMR selected sparse measured lags: [2, 3]",x_noise_sensor_lag3,False,,measured
+promo_index,past,past,3,True,lag-aware ModMRMR selected sparse measured lags: [3],x_promo_index_lag3,False,,measured
+calendar_flag,future,future,4,True,lag-aware ModMRMR selected known-future lags: [4] (provenance=calendar),x_calendar_flag_lag4,True,calendar,known_future:calendar
